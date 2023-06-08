@@ -19,20 +19,25 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * @author Clinton Begin
+ * 实现 Invoker 接口，获得 Field 调用者
  */
 public class GetFieldInvoker implements Invoker {
+  /**
+   * Field 对象
+   */
   private final Field field;
 
   public GetFieldInvoker(Field field) {
     this.field = field;
   }
 
+  // 获得属性
   @Override
   public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
     return field.get(target);
   }
 
+  // 返回属性类型
   @Override
   public Class<?> getType() {
     return field.getType();
